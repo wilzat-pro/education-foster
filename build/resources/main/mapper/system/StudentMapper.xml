@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.crown.project.system.student.mapper.StudentMapper">
+
+	<resultMap type="Student" id="StudentResult">
+		<id     property="tbId"       column="tb_id"      />
+		<result property="studentId"       column="student_id"      />
+		<result property="sourceIn"    column="source_in"   />
+		<result property="province"     column="province"    />
+		<result property="city"        column="city"        />
+		<result property="country"  column="country"  />
+		<result property="studentName"          column="student_name"          />
+		<result property="sex"       column="stu_sex"       />
+		<result property="birthday"     column="birthday"     />
+		<result property="studentInDate"         column="student_in_date"    />
+		<result property="politicFace"       column="politic_face"       />
+		<result property="race"      column="race"     />
+		<result property="midSchool"      column="mid_school"     />
+		<result property="licenceId"    column="licence_id"   />
+		<result property="familyAddress"     column="family_addr"    />
+		<result property="post"   column="post"  />
+		<result property="email"     column="email"    />
+		<result property="telephone"   column="telephone"  />
+        <result property="subjectType"       column="subject_type"       />
+        <result property="score"       column="score"       />
+		<result property="domainIn"       column="domain_in"       />
+        <result property="dept"       column="dept_id"       />
+        <result property="parentId"       column="parent_id"       />
+        <result property="deptName"       column="dept_name"       />
+        <result property="classIn"       column="class_in"       />
+        <result property="status"       column="status"       />
+        <result property="creatTime"       column="create_time"       />
+        <result property="password"       column="password"       />
+		<association property="dept"    column="dept_id" javaType="Dept" resultMap="deptResult" />
+	</resultMap>
+
+	<resultMap id="deptResult" type="Dept">
+		<id     property="deptId"   column="dept_id"     />
+		<result property="parentId" column="parent_id"   />
+		<result property="deptName" column="dept_name"   />
+		<result property="orderNum" column="order_num"   />
+		<result property="leader"   column="leader"   />
+		<result property="status"   column="dept_status" />
+	</resultMap>
+
+
+    <sql id="selectStudentVo">
+        select  tb_student.student_id, tb_student.source_in, tb_student.province, tb_student.city, tb_student.country, tb_student.student_name,
+        tb_student.stu_sex, tb_student.birthday, tb_student.student_in_date, tb_student.politic_face, tb_student.race, tb_student.mid_school, tb_student.licence_id,
+        tb_student.family_addr, tb_student.post, tb_student.email, tb_student.telephone, tb_student.subject_type, tb_student.score, tb_student.domain_in,
+        tb_student.dept_id, tb_student.parent_id, tb_student.dept_name, tb_student.class_in, tb_student.status, tb_student.create_time,
+        sys_dept.dept_name, sys_dept.leader from tb_student
+        left join sys_dept on tb_student.dept_id =  sys_dept.dept_id
+    </sql>
+
+    <select id="selectStudentList" parameterType="Student" resultMap="StudentResult">
+        select tb_student.student_id, tb_student.source_in, tb_student.province, tb_student.city, tb_student.country, tb_student.student_name,
+        tb_student.stu_sex, tb_student.birthday, tb_student.student_in_date, tb_student.politic_face, tb_student.race, tb_student.mid_school, tb_student.licence_id,
+        tb_student.family_addr, tb_student.post, tb_student.email, tb_student.telephone, tb_student.subject_type, tb_student.score, tb_student.domain_in,
+        tb_student.dept_id, tb_student.parent_id, tb_student.dept_name, tb_student.class_in, tb_student.status, tb_student.create_time,
+        sys_dept.dept_name, sys_dept.leader from tb_student
+        left join sys_dept on tb_student.dept_id = sys_dept.dept_id
+        <if test="studentName != null and studentName != ''">
+            AND tb_student.student_name like concat('%', #{student_name}, '%')
+        </if>
+        <if test="status != null and status != ''">
+            AND tb_student.status = #{status}
+        </if>
+        <if test="telephone != null and telephone != ''">
+            AND tb_student.telephone like concat('%', #{telephone}, '%')
+        </if>
+        <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+            AND date_format(tb_student.create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+        </if>
+        <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+            AND date_format(tb_student.create_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+        </if>
+        <if test="deptId != null and deptId != 0">
+            AND (tb_student.dept_id = #{deptId} OR tb_student.dept_id IN ( SELECT t.dept_id FROM sys_dept t WHERE FIND_IN_SET
+            (#{deptId},ancestors) ))
+        </if>
+        <!-- 数据范围过滤 -->
+        ${params.dataScope}
+    </select>
+
+
+    <select id="selectStudentByLoginName" parameterType="String" resultMap="StudentResult">
+        <include refid="selectStudentVo"/>
+        where tb_student.student_name = #{studentName}
+    </select>
+
+    <select id="selectStudentByPhoneNumber" parameterType="String" resultMap="StudentResult">
+        <include refid="selectStudentVo"/>
+        where tb_student.telephone = #{telephone}
+    </select>
+
+    <select id="selectStudentByEmail" parameterType="String" resultMap="StudentResult">
+        <include refid="selectStudentVo"/>
+        where tb_student.email = #{email}
+    </select>
+
+    <select id="selectStudentById" parameterType="Long" resultMap="StudentResult">
+        <include refid="selectStudentVo"/>
+        where tb_student.student_id = #{studentId}
+    </select>
+
+</mapper>

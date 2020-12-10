@@ -1,0 +1,254 @@
+{
+  "groups": [
+    {
+      "name": "crown",
+      "type": "org.crown.framework.springboot.properties.CrownProperties",
+      "sourceType": "org.crown.framework.springboot.properties.CrownProperties"
+    },
+    {
+      "name": "crown.address",
+      "type": "org.crown.framework.springboot.properties.Address",
+      "sourceType": "org.crown.framework.springboot.properties.CrownProperties"
+    },
+    {
+      "name": "crown.demo",
+      "type": "org.crown.framework.springboot.properties.Demo",
+      "sourceType": "org.crown.framework.springboot.properties.CrownProperties"
+    },
+    {
+      "name": "crown.email",
+      "type": "org.crown.framework.springboot.properties.Email",
+      "sourceType": "org.crown.framework.springboot.properties.CrownProperties"
+    },
+    {
+      "name": "crown.generator",
+      "type": "org.crown.framework.springboot.properties.Generator",
+      "sourceType": "org.crown.framework.springboot.properties.CrownProperties"
+    },
+    {
+      "name": "crown.password",
+      "type": "org.crown.framework.springboot.properties.Password",
+      "sourceType": "org.crown.framework.springboot.properties.CrownProperties"
+    },
+    {
+      "name": "crown.path",
+      "type": "org.crown.framework.springboot.properties.Path",
+      "sourceType": "org.crown.framework.springboot.properties.CrownProperties"
+    },
+    {
+      "name": "crown.path.prefix",
+      "type": "org.crown.framework.springboot.properties.Prefix",
+      "sourceType": "org.crown.framework.springboot.properties.Path"
+    },
+    {
+      "name": "crown.xss",
+      "type": "org.crown.framework.springboot.properties.Xss",
+      "sourceType": "org.crown.framework.springboot.properties.CrownProperties"
+    },
+    {
+      "name": "file-service",
+      "type": "org.crown.project.system.config.service.WebConfig",
+      "sourceType": "org.crown.project.system.config.service.WebConfig"
+    },
+    {
+      "name": "shiro",
+      "type": "org.crown.framework.springboot.properties.ShiroProperties",
+      "sourceType": "org.crown.framework.springboot.properties.ShiroProperties"
+    },
+    {
+      "name": "shiro.remember-me-cookie",
+      "type": "org.crown.framework.springboot.properties.RememberMeCookie",
+      "sourceType": "org.crown.framework.springboot.properties.ShiroProperties"
+    },
+    {
+      "name": "shiro.session",
+      "type": "org.crown.framework.springboot.properties.Session",
+      "sourceType": "org.crown.framework.springboot.properties.ShiroProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "crown.address.enabled",
+      "type": "java.lang.Boolean",
+      "description": "开关",
+      "sourceType": "org.crown.framework.springboot.properties.Address",
+      "defaultValue": true
+    },
+    {
+      "name": "crown.demo.enabled",
+      "type": "java.lang.Boolean",
+      "description": "开关",
+      "sourceType": "org.crown.framework.springboot.properties.Demo",
+      "defaultValue": false
+    },
+    {
+      "name": "crown.email.enabled",
+      "type": "java.lang.Boolean",
+      "description": "开关",
+      "sourceType": "org.crown.framework.springboot.properties.Email",
+      "defaultValue": false
+    },
+    {
+      "name": "crown.email.send",
+      "type": "java.lang.String",
+      "description": "告警邮箱地址",
+      "sourceType": "org.crown.framework.springboot.properties.Email"
+    },
+    {
+      "name": "crown.generator.author",
+      "type": "java.lang.String",
+      "description": "作者",
+      "sourceType": "org.crown.framework.springboot.properties.Generator"
+    },
+    {
+      "name": "crown.generator.package-path",
+      "type": "java.lang.String",
+      "description": "默认生成包路径",
+      "sourceType": "org.crown.framework.springboot.properties.Generator"
+    },
+    {
+      "name": "crown.password.max-retry-count",
+      "type": "java.lang.Integer",
+      "description": "密码最大输入错误次数",
+      "sourceType": "org.crown.framework.springboot.properties.Password",
+      "defaultValue": 10
+    },
+    {
+      "name": "crown.path.file-path",
+      "type": "java.lang.String",
+      "description": "上传路径",
+      "sourceType": "org.crown.framework.springboot.properties.Path"
+    },
+    {
+      "name": "crown.path.prefix.avatar",
+      "type": "java.lang.String",
+      "description": "头像上传路径前缀",
+      "sourceType": "org.crown.framework.springboot.properties.Prefix",
+      "defaultValue": "avatar\/"
+    },
+    {
+      "name": "crown.path.prefix.download",
+      "type": "java.lang.String",
+      "description": "下载路径前缀",
+      "sourceType": "org.crown.framework.springboot.properties.Prefix",
+      "defaultValue": "download\/"
+    },
+    {
+      "name": "crown.path.prefix.upload",
+      "type": "java.lang.String",
+      "description": "上传路径前缀",
+      "sourceType": "org.crown.framework.springboot.properties.Prefix",
+      "defaultValue": "upload\/"
+    },
+    {
+      "name": "crown.path.resource-handler",
+      "type": "java.lang.String",
+      "description": "资源Handler",
+      "sourceType": "org.crown.framework.springboot.properties.Path"
+    },
+    {
+      "name": "crown.path.resource-path",
+      "type": "java.lang.String",
+      "description": "资源路径",
+      "sourceType": "org.crown.framework.springboot.properties.Path"
+    },
+    {
+      "name": "crown.xss.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Xss开关",
+      "sourceType": "org.crown.framework.springboot.properties.Xss"
+    },
+    {
+      "name": "crown.xss.exclude-fields",
+      "type": "java.util.List<java.lang.String>",
+      "description": "排除字段",
+      "sourceType": "org.crown.framework.springboot.properties.Xss"
+    },
+    {
+      "name": "crown.xss.exclude-urls",
+      "type": "java.util.List<java.lang.String>",
+      "description": "排除路径",
+      "sourceType": "org.crown.framework.springboot.properties.Xss"
+    },
+    {
+      "name": "shiro.index-url",
+      "type": "java.lang.String",
+      "description": "首页地址",
+      "sourceType": "org.crown.framework.springboot.properties.ShiroProperties"
+    },
+    {
+      "name": "shiro.login-url",
+      "type": "java.lang.String",
+      "description": "登录地址",
+      "sourceType": "org.crown.framework.springboot.properties.ShiroProperties"
+    },
+    {
+      "name": "shiro.remember-me-cookie.domain",
+      "type": "java.lang.String",
+      "description": "设置Cookie的域名 默认空，即当前访问的域名",
+      "sourceType": "org.crown.framework.springboot.properties.RememberMeCookie"
+    },
+    {
+      "name": "shiro.remember-me-cookie.http-only",
+      "type": "java.lang.Boolean",
+      "description": "设置HttpOnly属性",
+      "sourceType": "org.crown.framework.springboot.properties.RememberMeCookie",
+      "defaultValue": false
+    },
+    {
+      "name": "shiro.remember-me-cookie.max-age",
+      "type": "java.lang.Integer",
+      "description": "设置Cookie的过期时间，天为单位",
+      "sourceType": "org.crown.framework.springboot.properties.RememberMeCookie",
+      "defaultValue": 0
+    },
+    {
+      "name": "shiro.remember-me-cookie.path",
+      "type": "java.lang.String",
+      "description": "设置cookie的有效访问路径",
+      "sourceType": "org.crown.framework.springboot.properties.RememberMeCookie"
+    },
+    {
+      "name": "shiro.session.db-sync-period",
+      "type": "java.lang.Integer",
+      "description": "同步session到数据库的周期（分钟）",
+      "sourceType": "org.crown.framework.springboot.properties.Session",
+      "defaultValue": 0
+    },
+    {
+      "name": "shiro.session.expire-time",
+      "type": "java.lang.Integer",
+      "description": "# Session超时时间，-1代表永不过期（默认30分钟）",
+      "sourceType": "org.crown.framework.springboot.properties.Session",
+      "defaultValue": 0
+    },
+    {
+      "name": "shiro.session.kickout-after",
+      "type": "java.lang.Boolean",
+      "description": "踢出之前登录的\/之后登录的用户，默认踢出之前登录的用户",
+      "sourceType": "org.crown.framework.springboot.properties.Session",
+      "defaultValue": false
+    },
+    {
+      "name": "shiro.session.max-session",
+      "type": "java.lang.Integer",
+      "description": "同一个用户最大会话数，比如2的意思是同一个账号允许最多同时两个人登录（-1不限制）",
+      "sourceType": "org.crown.framework.springboot.properties.Session",
+      "defaultValue": 0
+    },
+    {
+      "name": "shiro.session.validation-interval",
+      "type": "java.lang.Integer",
+      "description": "相隔多久检查一次session的有效性，(分钟)",
+      "sourceType": "org.crown.framework.springboot.properties.Session",
+      "defaultValue": 0
+    },
+    {
+      "name": "shiro.unauth-url",
+      "type": "java.lang.String",
+      "description": "权限认证失败地址",
+      "sourceType": "org.crown.framework.springboot.properties.ShiroProperties"
+    }
+  ],
+  "hints": []
+}
